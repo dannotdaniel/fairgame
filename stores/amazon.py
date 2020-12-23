@@ -1093,10 +1093,8 @@ class Amazon:
             self.setup_driver = False
 
         # Delete crashed, so restore pop-up doesn't happen
-        path_to_prefs = (
-            os.path.dirname(os.path.abspath("__file__"))
-            + "\\.profile-amz\\Default\\Preferences"
-        )
+        path_to_prefs = os.path.join( os.path.dirname(os.path.abspath("__file__")),
+            ".profile-amz", "Default", "Preferences")
         with fileinput.FileInput(path_to_prefs, inplace=True) as file:
             for line in file:
                 print(line.replace("Crashed", "none"), end="")
